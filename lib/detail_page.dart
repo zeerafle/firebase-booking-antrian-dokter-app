@@ -1,28 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:postest7_2009106054_vauwez/Dokter.dart';
 import 'package:postest7_2009106054_vauwez/form_page.dart';
 import 'package:get/get.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage(
-      {Key? key,
-      required this.pathFoto,
-      required this.nama,
-      required this.jabatan,
-      required this.alamat,
-      required this.tentang,
-      required this.jumlahPasien,
-      required this.tahunMengabdi,
-      required this.resepObat})
-      : super(key: key);
+  const DetailPage({Key? key, required this.dokter}) : super(key: key);
 
-  final String pathFoto;
-  final String nama;
-  final String jabatan;
-  final String alamat;
-  final String tentang;
-  final String jumlahPasien;
-  final String tahunMengabdi;
-  final String resepObat;
+  final Dokter dokter;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +26,7 @@ class DetailPage extends StatelessWidget {
               /*     image: DecorationImage( */
               /*   image: AssetImage(pathFoto), */
               /*   fit: BoxFit.fitWidth, */
-              child: Image.asset(pathFoto, fit: BoxFit.fitWidth),
+              child: Image.asset(dokter.pathFoto, fit: BoxFit.fitWidth),
             ),
             /* Image.asset(pathFoto, fit: BoxFit.), */
             ListView(
@@ -93,7 +77,7 @@ class DetailPage extends StatelessWidget {
                                             fontFamily: "PoppinsRegular",
                                             fontSize: 11,
                                             color: Color(0xff333333)),
-                                        text: tentang),
+                                        text: dokter.tentang),
                                     textAlign: TextAlign.left,
                                   ),
                                   SizedBox(height: 11),
@@ -120,7 +104,7 @@ class DetailPage extends StatelessWidget {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  jumlahPasien,
+                                                  dokter.jumlahPasien,
                                                   style: TextStyle(
                                                       color: Color(0xff333333),
                                                       fontSize: 15),
@@ -145,7 +129,7 @@ class DetailPage extends StatelessWidget {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  tahunMengabdi,
+                                                  dokter.tahunMengabdi,
                                                   style: TextStyle(
                                                       color: Color(0xff333333),
                                                       fontSize: 15),
@@ -171,7 +155,7 @@ class DetailPage extends StatelessWidget {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  resepObat,
+                                                  dokter.resepObat,
                                                   style: TextStyle(
                                                       color: Color(0xff333333),
                                                       fontSize: 15),
@@ -233,19 +217,19 @@ class DetailPage extends StatelessWidget {
                         padding: EdgeInsets.all(13),
                         child: Column(children: [
                           Text(
-                            nama,
+                            dokter.nama,
                             style: TextStyle(
                               fontFamily: "PoppinsBold",
                               fontSize: 20,
                               color: Colors.white,
                             ),
                           ),
-                          Text(jabatan,
+                          Text(dokter.jabatan,
                               style: TextStyle(
                                   fontFamily: "PoppinsRegular",
                                   fontSize: 13,
                                   color: Colors.white)),
-                          Text(alamat,
+                          Text(dokter.alamat,
                               style: TextStyle(
                                   fontFamily: "PoppinsRegular",
                                   fontSize: 13,

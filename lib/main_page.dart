@@ -1,11 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:postest7_2009106054_vauwez/Dokter.dart';
+import 'package:postest7_2009106054_vauwez/booking.dart';
 import 'package:postest7_2009106054_vauwez/detail_page.dart';
 import 'form_page.dart';
 import 'landing_page.dart';
 import 'package:get/get.dart';
 
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+  MainPage({Key? key}) : super(key: key);
+
+  final drPalmer = const Dokter(
+      pathFoto: "assets/dr_christine_palmer_square.png",
+      nama: "Dr. Christine Palmer",
+      alamat: "Rumah Sakit Metro-General",
+      jamBuka: "08.00 - Selesai",
+      jabatan: "Dokter umum",
+      tentang:
+          "Dokter Christine Palmer adalah seorang ahli bedah di Rumah Sakit Umum Metro dan mantan rekan Stephen. Dia adalah pacar Strange sampa mereka putus akrena kepribadian Strange yang egois, tetapi masih tetap berteman. Dia membantu Strange setelah kecelakaannya meninggalkannya tanpa menggunakan tangannya sampai dia tidak bisa lagi melihat Strange menghancurkan hidupnya.",
+      jumlahPasien: "578",
+      tahunMengabdi: "10",
+      resepObat: "1028");
+  final drStrange = const Dokter(
+      pathFoto: "assets/doctor_stephen_strange_square.jpeg",
+      nama: "Dr. Stephen Strange",
+      alamat: "177A Bleecker Street",
+      jamBuka: "07.00 - Selesai",
+      jabatan: "Kepala klinik",
+      tentang:
+          "Dokter Stephen Vincent Strange, M.D., Ph.D adalah mantan Sorcerer Supreme dan Master of the Mystic Arts. Awalnya menjadi ahli bedah saraf yang brilian tapi arogan, Strange mengalami kecelakaan mobil yang mengakibatkan tangannya menjadi lumpuh. Setelah pengobatan Barat mengecewakannya, Strange memulai perjalanan ke Kamar-Taj, di mana ia dilatih oleh Yang Kuno dalam hal Sihir dan Multiverse.",
+      jumlahPasien: "90",
+      tahunMengabdi: "6",
+      resepObat: "78");
+  final drWatson = const Dokter(
+      pathFoto: "assets/dr_john_watson.jpg",
+      nama: "Dr. John Watson",
+      alamat: "221B Baker Street",
+      jamBuka: "15.00 - 21.00",
+      jabatan: "Asisten kepala",
+      tentang:
+          "Dr John Hamish Watson (MBBS) adalah sahabat dan asisten Sherlock Holmes dan mantan dokter Angkatan Darat Inggris. Sebelum menikahi Mary Morstan, dia tinggal di 221B Baker Street bersama Sherlock, sebuah flat yang mereka sewa dari Mrs Hudson. Dia tinggal bersama Mary, yang bekerja dengannya sebelum mengembangkan hubungan romantis.",
+      jumlahPasien: "1",
+      tahunMengabdi: "4",
+      resepObat: "30");
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +59,12 @@ class MainPage extends StatelessWidget {
               leading: Icon(Icons.person),
               title: Text("Vauwez Sam El Fareez"),
             )),
+            ListTile(
+                title: const Text("Booking"),
+                leading: const Icon(Icons.schedule_send),
+                onTap: () {
+                  Get.to(Booking());
+                }),
             ListTile(
               title: const Text("Keluar"),
               leading: const Icon(Icons.logout),
@@ -138,73 +180,23 @@ class MainPage extends StatelessWidget {
             const SizedBox(
               height: 28,
             ),
-            const ContainerDokter(
-                pathFoto: "assets/dr_christine_palmer_square.png",
-                nama: "Dr. Christine Palmer",
-                alamat: "Rumah Sakit Metro-General",
-                jamBuka: "08.00 - Selesai",
-                jabatan: "Dokter umum",
-                tentang:
-                    "Dokter Christine Palmer adalah seorang ahli bedah di Rumah Sakit Umum Metro dan mantan rekan Stephen. Dia adalah pacar Strange sampa mereka putus akrena kepribadian Strange yang egois, tetapi masih tetap berteman. Dia membantu Strange setelah kecelakaannya meninggalkannya tanpa menggunakan tangannya sampai dia tidak bisa lagi melihat Strange menghancurkan hidupnya.",
-                jumlahPasien: "578",
-                tahunMengabdi: "10",
-                resepObat: "1028"),
+            ContainerDokter(dokter: drPalmer),
             const SizedBox(
               height: 24,
             ),
-            const ContainerDokter(
-                pathFoto: "assets/doctor_stephen_strange_square.jpeg",
-                nama: "Dr. Stephen Strange",
-                alamat: "177A Bleecker Street",
-                jamBuka: "07.00 - Selesai",
-                jabatan: "Kepala klinik",
-                tentang:
-                    "Dokter Stephen Vincent Strange, M.D., Ph.D adalah mantan Sorcerer Supreme dan Master of the Mystic Arts. Awalnya menjadi ahli bedah saraf yang brilian tapi arogan, Strange mengalami kecelakaan mobil yang mengakibatkan tangannya menjadi lumpuh. Setelah pengobatan Barat mengecewakannya, Strange memulai perjalanan ke Kamar-Taj, di mana ia dilatih oleh Yang Kuno dalam hal Sihir dan Multiverse.",
-                jumlahPasien: "90",
-                tahunMengabdi: "6",
-                resepObat: "78"),
+            ContainerDokter(dokter: drStrange),
             const SizedBox(
               height: 24,
             ),
-            const ContainerDokter(
-                pathFoto: "assets/dr_john_watson.jpg",
-                nama: "Dr. John Watson",
-                alamat: "221B Baker Street",
-                jamBuka: "15.00 - 21.00",
-                jabatan: "Asisten kepala",
-                tentang:
-                    "Dr John Hamish Watson (MBBS) adalah sahabat dan asisten Sherlock Holmes dan mantan dokter Angkatan Darat Inggris. Sebelum menikahi Mary Morstan, dia tinggal di 221B Baker Street bersama Sherlock, sebuah flat yang mereka sewa dari Mrs Hudson. Dia tinggal bersama Mary, yang bekerja dengannya sebelum mengembangkan hubungan romantis.",
-                jumlahPasien: "1",
-                tahunMengabdi: "4",
-                resepObat: "30"),
+            ContainerDokter(dokter: drWatson),
           ],
         ));
   }
 }
 
 class ContainerDokter extends StatelessWidget {
-  const ContainerDokter(
-      {Key? key,
-      required this.pathFoto,
-      required this.nama,
-      required this.alamat,
-      required this.jamBuka,
-      required this.jabatan,
-      required this.tentang,
-      required this.jumlahPasien,
-      required this.tahunMengabdi,
-      required this.resepObat})
-      : super(key: key);
-
-  final String pathFoto;
-  final String nama;
-  final String alamat;
-  final String jamBuka;
-  final String jabatan;
-  final String tentang;
-  final String jumlahPasien;
-  final String tahunMengabdi;
-  final String resepObat;
+  const ContainerDokter({Key? key, required this.dokter}) : super(key: key);
+  final Dokter dokter;
 
   @override
   Widget build(BuildContext context) {
@@ -218,7 +210,7 @@ class ContainerDokter extends StatelessWidget {
           child: Row(children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(600),
-              child: Image.asset(pathFoto),
+              child: Image.asset(dokter.pathFoto),
             ),
             const SizedBox(
               width: 14,
@@ -228,11 +220,11 @@ class ContainerDokter extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  nama,
+                  dokter.nama,
                   style: const TextStyle(fontSize: 15),
                 ),
                 Text(
-                  alamat,
+                  dokter.alamat,
                   overflow: TextOverflow.fade,
                   style: const TextStyle(
                       fontSize: 10, fontFamily: "PoppinsRegular"),
@@ -241,7 +233,7 @@ class ContainerDokter extends StatelessWidget {
                   children: [
                     const Icon(Icons.timer, size: 16, color: Color(0xffa8c686)),
                     Text(
-                      jamBuka,
+                      dokter.jamBuka,
                       style: const TextStyle(
                           fontSize: 10, fontFamily: "PoppinsMedium"),
                     ),
@@ -266,15 +258,7 @@ class ContainerDokter extends StatelessWidget {
             )
           ])),
       onTap: () {
-        Get.to(DetailPage(
-            pathFoto: pathFoto,
-            nama: nama,
-            jabatan: jabatan,
-            alamat: alamat,
-            tentang: tentang,
-            jumlahPasien: jumlahPasien,
-            tahunMengabdi: tahunMengabdi,
-            resepObat: resepObat));
+        Get.to(DetailPage(dokter: dokter));
       },
     );
   }
