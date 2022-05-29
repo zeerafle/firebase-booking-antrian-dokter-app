@@ -7,7 +7,8 @@ class GetxTextController extends GetxController {
       alamat = "".obs,
       bpjs = "".obs,
       alergiObat = "".obs,
-      keluhan = "".obs;
+      keluhan = "".obs,
+      sisaAntrian = "".obs;
 
   final namaController = TextEditingController();
   final umurController = TextEditingController();
@@ -15,4 +16,6 @@ class GetxTextController extends GetxController {
   final bpjsController = TextEditingController();
   final alergiObatController = TextEditingController();
   final keluhanController = TextEditingController();
+
+  List<Widget> listBooking = [];
 }
