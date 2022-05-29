@@ -46,7 +46,10 @@ class BookingPage extends StatelessWidget {
                                     (e) => ContainerBooking(
                                         sisaAntrian: e.get("sisaAntrian"),
                                         namaDokter: e.get("dokter"),
-                                        docId: e.id),
+                                        docId: e.id,
+                                        onDelete: () {
+                                          bookingStore.doc(e.id).delete();
+                                        }),
                                   )
                                   .toList(),
                             )
@@ -123,7 +126,9 @@ class ContainerBooking extends StatelessWidget {
                 IconButton(
                     icon: Icon(Icons.cancel_schedule_send),
                     tooltip: "Batalkan antrian",
-                    onPressed: () {}),
+                    onPressed: () {
+                      if (onDelete != null) onDelete!();
+                    }),
               ],
             )));
   }
