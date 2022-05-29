@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:postest7_2009106054_vauwez/Dokter.dart';
 import 'package:postest7_2009106054_vauwez/booking.dart';
 import 'package:postest7_2009106054_vauwez/detail_page.dart';
+import 'package:postest7_2009106054_vauwez/drawer.dart';
 import 'form_page.dart';
 import 'landing_page.dart';
 import 'package:get/get.dart';
@@ -59,28 +60,7 @@ class MainPage extends StatelessWidget {
           elevation: 0,
           iconTheme: const IconThemeData(color: Color(0xff333333)),
         ),
-        drawer: Drawer(
-          child: ListView(children: [
-            const DrawerHeader(
-                child: ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Vauwez Sam El Fareez"),
-            )),
-            ListTile(
-                title: const Text("Booking"),
-                leading: const Icon(Icons.schedule_send),
-                onTap: () {
-                  Get.to(Booking());
-                }),
-            ListTile(
-              title: const Text("Keluar"),
-              leading: const Icon(Icons.logout),
-              onTap: () {
-                Get.off(const LandingPage());
-              },
-            )
-          ]),
-        ),
+        drawer: MyDrawer(),
         body: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 17),
           children: [
