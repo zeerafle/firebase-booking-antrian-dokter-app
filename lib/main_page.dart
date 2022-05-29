@@ -16,6 +16,7 @@ class MainPage extends StatelessWidget {
       alamat: "Rumah Sakit Metro-General",
       jamBuka: "08.00 - Selesai",
       jabatan: "Dokter umum",
+      sisaAntrian: "12",
       tentang:
           "Dokter Christine Palmer adalah seorang ahli bedah di Rumah Sakit Umum Metro dan mantan rekan Stephen. Dia adalah pacar Strange sampa mereka putus akrena kepribadian Strange yang egois, tetapi masih tetap berteman. Dia membantu Strange setelah kecelakaannya meninggalkannya tanpa menggunakan tangannya sampai dia tidak bisa lagi melihat Strange menghancurkan hidupnya.",
       jumlahPasien: "578",
@@ -27,6 +28,7 @@ class MainPage extends StatelessWidget {
       alamat: "177A Bleecker Street",
       jamBuka: "07.00 - Selesai",
       jabatan: "Kepala klinik",
+      sisaAntrian: "39",
       tentang:
           "Dokter Stephen Vincent Strange, M.D., Ph.D adalah mantan Sorcerer Supreme dan Master of the Mystic Arts. Awalnya menjadi ahli bedah saraf yang brilian tapi arogan, Strange mengalami kecelakaan mobil yang mengakibatkan tangannya menjadi lumpuh. Setelah pengobatan Barat mengecewakannya, Strange memulai perjalanan ke Kamar-Taj, di mana ia dilatih oleh Yang Kuno dalam hal Sihir dan Multiverse.",
       jumlahPasien: "90",
@@ -38,6 +40,7 @@ class MainPage extends StatelessWidget {
       alamat: "221B Baker Street",
       jamBuka: "15.00 - 21.00",
       jabatan: "Asisten kepala",
+      sisaAntrian: "29",
       tentang:
           "Dr John Hamish Watson (MBBS) adalah sahabat dan asisten Sherlock Holmes dan mantan dokter Angkatan Darat Inggris. Sebelum menikahi Mary Morstan, dia tinggal di 221B Baker Street bersama Sherlock, sebuah flat yang mereka sewa dari Mrs Hudson. Dia tinggal bersama Mary, yang bekerja dengannya sebelum mengembangkan hubungan romantis.",
       jumlahPasien: "1",
@@ -248,7 +251,7 @@ class ContainerDokter extends StatelessWidget {
             const Spacer(),
             ElevatedButton(
               onPressed: () {
-                Get.to(FormPage());
+                Get.to(FormPage(dokter: dokter));
               },
               style: ElevatedButton.styleFrom(
                   //maximumSize: Size(86, 15),

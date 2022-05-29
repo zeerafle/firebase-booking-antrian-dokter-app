@@ -62,7 +62,7 @@ class DetailPage extends StatelessWidget {
                                               color: Color(0xff333333))),
                                       TextButton(
                                           onPressed: () {
-                                            Get.to(FormPage());
+                                            Get.to(FormPage(dokter: dokter));
                                           },
                                           child: Text("Antri sekarang",
                                               style: TextStyle(

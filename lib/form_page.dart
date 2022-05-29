@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:postest7_2009106054_vauwez/Dokter.dart';
 import 'package:postest7_2009106054_vauwez/controller.dart';
 import 'package:postest7_2009106054_vauwez/custom_alert.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,9 @@ Widget inputText(String label, String hint, TextEditingController controller) {
 }
 
 class FormPage extends StatelessWidget {
+  FormPage({Key? key, required this.dokter}) : super(key: key);
   final GetxTextController tc = Get.put(GetxTextController());
+  final Dokter dokter;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class FormPage extends StatelessWidget {
           height: 30,
         ),
         Text(
-          "Halo",
+          "Antrian ${dokter.nama}",
           style: const TextStyle(
             fontSize: 13,
           ),
@@ -63,9 +66,9 @@ class FormPage extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: const Color(0xfff0f66e)),
-              child: const Text(
-                "12",
-                style: TextStyle(
+              child: Text(
+                dokter.sisaAntrian,
+                style: const TextStyle(
                   fontFamily: "PoppinsBold",
                   fontSize: 24,
                 ),
@@ -112,11 +115,14 @@ class FormPage extends StatelessWidget {
             tc.bpjs.value = tc.bpjsController.text;
             tc.alergiObat.value = tc.alergiObatController.text;
             tc.keluhan.value = tc.keluhanController.text;
+            tc.sisaAntrian.value = dokter.sisaAntrian;
 
             CustomAlert(context);
 
             // ADD DATA
             FirebaseFirestore.instance.collection("booking").add({
+              "dokter": dokter.nama,
+              "sisaAntrian": dokter.sisaAntrian,
               "nama": tc.nama.value,
               "umur": tc.umur.value,
               "alamat": tc.alamat.value,

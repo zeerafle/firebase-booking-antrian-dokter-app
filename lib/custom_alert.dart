@@ -18,7 +18,7 @@ Future<dynamic> CustomAlert(BuildContext context) {
               baris("Nomor BPJS", tc.bpjs.value),
               baris("Alergi Obat", tc.alergiObat.value),
               baris("Keluhan", tc.keluhan.value),
-              baris("Nomor antrian", "12"),
+              baris("Nomor antrian", tc.sisaAntrian.value),
               const SizedBox(height: 20),
               const Text(
                   "Screenshot layar ini dan tunjukkan kepada operator jika sudah sampai ditempat dokter")
