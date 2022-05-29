@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:postest7_2009106054_vauwez/controller.dart';
 import 'package:postest7_2009106054_vauwez/custom_alert.dart';
 import 'package:get/get.dart';
@@ -114,7 +115,23 @@ class FormPage extends StatelessWidget {
 
             CustomAlert(context);
 
-            // TODO buat controller
+            // ADD DATA
+            FirebaseFirestore.instance.collection("booking").add({
+              "nama": tc.nama.value,
+              "umur": tc.umur.value,
+              "alamat": tc.alamat.value,
+              "bpjs": tc.bpjs.value,
+              "alergiObat": tc.alergiObat.value,
+              "keluhan": tc.keluhan.value,
+            });
+
+            // kosongkan controller
+            tc.namaController.text = "";
+            tc.umurController.text = "";
+            tc.alamatController.text = "";
+            tc.bpjsController.text = "";
+            tc.alergiObatController.text = "";
+            tc.keluhanController.text = "";
           },
           style: ElevatedButton.styleFrom(
             minimumSize: const Size(219, 55),

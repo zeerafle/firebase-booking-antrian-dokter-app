@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:postest7_2009106054_vauwez/Dokter.dart';
 import 'package:postest7_2009106054_vauwez/booking.dart';
@@ -45,6 +46,9 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference bookingStore = firestore.collection("booking");
+
     return Scaffold(
         backgroundColor: const Color(0xfff0f8ea),
         appBar: AppBar(
