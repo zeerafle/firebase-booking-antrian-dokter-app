@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:postest7_2009106054_vauwez/drawer.dart';
 
@@ -27,9 +28,22 @@ class Booking extends StatelessWidget {
             ),
             Column(
               children: [
-                ContainerBooking(sisaAntrian: "29", namaDokter: "Dr. Strange"),
-                ContainerBooking(sisaAntrian: "29", namaDokter: "Dr. Strange"),
-                ContainerBooking(sisaAntrian: "29", namaDokter: "Dr. Strange")
+                FutureBuilder<QuerySnapshot>(
+                    future:
+                        FirebaseFirestore.instance.collection("booking").get(),
+                    builder: (_, snapshot) {
+                      return (snapshot.hasData)
+                          ? Column(
+                              children: snapshot.data!.docs
+                                  .map(
+                                    (e) => ContainerBooking(
+                                        sisaAntrian: e.get("sisaAntrian"),
+                                        namaDokter: e.get("dokter")),
+                                  )
+                                  .toList(),
+                            )
+                          : Text("Sabar ...");
+                    })
               ],
             )
           ],
