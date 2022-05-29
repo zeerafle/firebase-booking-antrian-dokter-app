@@ -1,13 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:postest7_2009106054_vauwez/booking_detail_page.dart';
 import 'package:postest7_2009106054_vauwez/drawer.dart';
+import 'package:get/get.dart';
 
-class Booking extends StatelessWidget {
-  Booking({Key? key}) : super(key: key);
+class BookingPage extends StatelessWidget {
+  BookingPage({Key? key}) : super(key: key);
+
+  String docId = "";
 
   List<Widget> listBooking = [];
   @override
   Widget build(BuildContext context) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    CollectionReference bookingStore = firestore.collection("booking");
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -28,9 +35,9 @@ class Booking extends StatelessWidget {
             ),
             Column(
               children: [
-                FutureBuilder<QuerySnapshot>(
-                    future:
-                        FirebaseFirestore.instance.collection("booking").get(),
+                // READ DATA
+                StreamBuilder<QuerySnapshot>(
+                    stream: bookingStore.snapshots(),
                     builder: (_, snapshot) {
                       return (snapshot.hasData)
                           ? Column(
@@ -38,7 +45,8 @@ class Booking extends StatelessWidget {
                                   .map(
                                     (e) => ContainerBooking(
                                         sisaAntrian: e.get("sisaAntrian"),
-                                        namaDokter: e.get("dokter")),
+                                        namaDokter: e.get("dokter"),
+                                        docId: e.id),
                                   )
                                   .toList(),
                             )
@@ -56,19 +64,21 @@ class ContainerBooking extends StatelessWidget {
       {Key? key,
       required this.sisaAntrian,
       required this.namaDokter,
-      this.onUpdate,
+      required this.docId,
       this.onDelete})
       : super(key: key);
 
   final String sisaAntrian;
   final String namaDokter;
-  final Function? onUpdate;
+  final String docId;
   final Function? onDelete;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {},
+        onTap: () {
+          Get.to(BookingDetail(docId: docId));
+        },
         child: Container(
             padding: const EdgeInsets.symmetric(vertical: 7, horizontal: 13),
             margin: const EdgeInsets.symmetric(vertical: 7),

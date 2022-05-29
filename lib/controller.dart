@@ -8,6 +8,7 @@ class GetxTextController extends GetxController {
       bpjs = "".obs,
       alergiObat = "".obs,
       keluhan = "".obs,
+      dokter = "".obs,
       sisaAntrian = "".obs;
 
   final namaController = TextEditingController();

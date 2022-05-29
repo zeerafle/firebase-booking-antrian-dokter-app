@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:postest7_2009106054_vauwez/booking.dart';
+import 'package:postest7_2009106054_vauwez/booking_list_page.dart';
 import 'package:postest7_2009106054_vauwez/landing_page.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +19,7 @@ class MyDrawer extends StatelessWidget {
             title: const Text("Booking"),
             leading: const Icon(Icons.schedule_send),
             onTap: () {
-              Get.to(Booking());
+              Get.to(BookingPage());
             }),
         ListTile(
           title: const Text("Keluar"),
